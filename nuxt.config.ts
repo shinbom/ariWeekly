@@ -15,5 +15,11 @@ export default defineNuxtConfig({
       ]
     }
   },
-  pages: true
+  pages: true,
+  css : [
+    '~/assets/scss/reset.scss'
+  ],
+  typescript: {
+    strict: true
+  }
 })
