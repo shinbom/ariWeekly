@@ -1,24 +1,29 @@
 <template>
   <div id="app" >
-    <ariTest  />
     <NuxtPage />
   </div>
 </template>
 
-<script>
-import ariTest from './components/ariTest.vue';
-export default {
-  components: {
-    ariTest
-  },
-  methods: {
-    test(e){
-      e.preventDefault()
-      console.log(e)
-      console.log('width::' , window.outerWidth)
-    }
+<script setup lang="ts">
+import { onMounted } from 'vue';
+import { initializeApp } from "firebase/app";
+import userService from './services/userService';
+
+onMounted(() => {
+  const firebaseConfig = {
+    apiKey: "AIzaSyDfCyIdzViI-43xn8gqN8Ub5dGda2yGjr0",
+    authDomain: "ariweekly-dfa03.firebaseapp.com",
+    projectId: "ariweekly-dfa03",
+    storageBucket: "ariweekly-dfa03.appspot.com",
+    messagingSenderId: "305342243128",
+    appId: "1:305342243128:web:d94e03bf47a51db836a1cd"
   }
-}
+  initializeApp(firebaseConfig);
+
+  const UserService = new userService()
+  UserService.getLoginData()
+})
+
 </script>
 
 <style lang="scss" scoped>
